@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">AppCocktail</string>
+    <string name="btn_connexion">Connecter</string>
+    <string name="text_Inscription">Créer un compte</string>
+    <string name="placeholder_email">exemple@mail.com</string>
+    <string name="placeholder_pwd">votre mot de passe</string>
+</resources>
