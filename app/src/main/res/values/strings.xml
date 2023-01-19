@@ -5,9 +5,14 @@
     <string name="placeholder_email">votre email</string>
     <string name="placeholder_pwd">votre mot de passe</string>
     <string name="btn_submit">valider</string>
+    <string name="titre_home">Prépare ton shaker</string>
+    <string name="info_home">Pour lancer la rechercher, shake !</string>
+    <string name="ou">ou</string>
+    <string name="secondary_title_home">Nos dernières recettes de cocktail  ></string>
     <string name="name">Nom</string>
     <string name="surname">Prenom</string>
     <string name="mail">Email</string>
     <string name="pwd">Mot de passe</string>
     <string name="phone">Téléphone</string>
+
 </resources>

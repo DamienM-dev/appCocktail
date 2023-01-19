@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.SearchView;
 import android.widget.Spinner;
 
 public class HomeActivity extends AppCompatActivity {
@@ -34,5 +35,7 @@ public class HomeActivity extends AppCompatActivity {
                 // rien à faire
             }
         });
+        SearchView searchView = findViewById(R.id.searchView);
+        searchView.setClickable(true);
     }
 }
