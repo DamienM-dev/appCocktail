@@ -2,6 +2,12 @@
     <string name="app_name">AppCocktail</string>
     <string name="btn_connexion">Connecter</string>
     <string name="text_Inscription">Créer un compte</string>
-    <string name="placeholder_email">exemple@mail.com</string>
+    <string name="placeholder_email">votre email</string>
     <string name="placeholder_pwd">votre mot de passe</string>
+    <string name="btn_submit">valider</string>
+    <string name="name">Nom</string>
+    <string name="surname">Prenom</string>
+    <string name="mail">Email</string>
+    <string name="pwd">Mot de passe</string>
+    <string name="phone">Téléphone</string>
 </resources>
