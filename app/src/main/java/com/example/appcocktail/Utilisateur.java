@@ -2,13 +2,19 @@ package com.example.appcocktail;
 
 public class Utilisateur {
 
+
     public String nom;
     public String prenom;
     public String email;
     public String pwd;
     public String tel;
+public Utilisateur(){};
 
-    public Utilisateur(String nom, String prenom, String email, String pwd,  String tel) {
+    public Utilisateur(String nom, String prenom, String email, String pwd, String tel) {
+
+
+
+
         this.nom = nom;
         this.prenom = prenom;
         this.email = email;
@@ -56,5 +62,7 @@ public class Utilisateur {
     public void setTel(String tel) {
         this.tel = tel;
     }
+
 }
+
 

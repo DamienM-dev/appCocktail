@@ -17,7 +17,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity<FirebaseAuth> extends AppCompatActivity {
+
+    private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +29,8 @@ public class MainActivity extends AppCompatActivity {
 
 //Au clique du bouton, je vais sur l'accueil
         //TODO faire une condition pour connecter grace a l'email et pwd
+
+        mAuth = FirebaseAuth.getInstance();
 
         Button button = findViewById(R.id.buttonConnexion);
         button.setOnClickListener(new View.OnClickListener() {

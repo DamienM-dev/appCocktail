@@ -39,7 +39,7 @@ public class activity_form extends AppCompatActivity {
         btnSave = (Button) findViewById(R.id.submit_button);
         mFirebaseInstance = FirebaseDatabase.getInstance();
         // Acces au contenu de la node personnes
-        mFirebaseDatabase = mFirebaseInstance.getReference("personnes");
+        mFirebaseDatabase = mFirebaseInstance.getReference("Utilisateur");
         // cAffection de la valeur à la node titre
         mFirebaseInstance.getReference("titre").setValue("Liste des personnes Database Firebase");
         // listener sur le titre
@@ -69,7 +69,7 @@ public class activity_form extends AppCompatActivity {
                 String pwd = inputPwd.getText().toString();
                 String tel = inputTelephone.getText().toString();
                 //creation de l'utilisateur
-                createUser(nom, prenom, email, pwd, tel);
+                createUser( nom, prenom, email, pwd, tel);
             }
         });
     }
@@ -103,11 +103,10 @@ public class activity_form extends AppCompatActivity {
                     Log.e(TAG, "User data is null!");
                     return;
                 }
-                Log.e(TAG, "Personne saisie:!" + user.nom + ", " + user.prenom + ", " + user.email +
+                Log.e(TAG, "Personne saisie:!" + user + ", " + user.prenom + ", " + user.email +
                         "," + user.pwd + "," + user.tel);
-                // Affichage des infos de la personne dans le textview
-                txtDetails.setText(user.nom + ", " + user.prenom + ", " + user.email + "," + user.pwd
-                        + "," + user.tel);
+
+
                 // reset des edit text
                 inputEmail.setText("");
                 inputNom.setText("");
@@ -119,8 +118,7 @@ public class activity_form extends AppCompatActivity {
             @Override
             public void onCancelled(DatabaseError error) {
                 // Errreur de lecture
-                Log.e(TAG, "Erreur à la lecture de l'utilisateur",
-                        error.toException());
+                Log.e(TAG, "Erreur à la lecture de l'utilisateur", error.toException());
             }
         });
     }

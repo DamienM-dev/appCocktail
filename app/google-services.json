@@ -1,34 +1,42 @@
 {
   "project_info": {
-    "project_number": "860959138083",
-    "firebase_url": "https://cocktailapp-41def-default-rtdb.europe-west1.firebasedatabase.app",
-    "project_id": "cocktailapp-41def",
-    "storage_bucket": "cocktailapp-41def.appspot.com"
+    "project_number": "433303574272",
+    "firebase_url": "https://cocktailapp-e9109-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "cocktailapp-e9109",
+    "storage_bucket": "cocktailapp-e9109.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:860959138083:android:89309df347eb72827fec96",
+        "mobilesdk_app_id": "1:433303574272:android:4adb8df292ecd027d805e5",
         "android_client_info": {
           "package_name": "com.example.appcocktail"
         }
       },
       "oauth_client": [
         {
-          "client_id": "860959138083-bq46oue6rm09jp0k361f6gk8plls89uj.apps.googleusercontent.com",
+          "client_id": "433303574272-80o52ruauihjvu2u9hbph64l7hvgk20q.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.appcocktail",
+            "certificate_hash": "6f9228075cf04b3b5623329019668c0d0be98378"
+          }
+        },
+        {
+          "client_id": "433303574272-iult1rups8evueacq5vmf8rhhimjghrp.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDhaW28qFpu6Nszm_4XtLjZG-ZCklENq3I"
+          "current_key": "AIzaSyAeqAqxwVn3NVO2EgXYfOzGOlAg3y3Wh7k"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "860959138083-bq46oue6rm09jp0k361f6gk8plls89uj.apps.googleusercontent.com",
+              "client_id": "433303574272-iult1rups8evueacq5vmf8rhhimjghrp.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
