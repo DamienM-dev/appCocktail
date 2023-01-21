@@ -3,11 +3,13 @@ package com.example.appcocktail;
 public class Cocktail {
 
     private String nom;
+    private String ingredient;
     private String recette;
 
 
-    public Cocktail(String nom, String recette) {
+    public Cocktail(String nom, String ingredient, String recette) {
         this.nom = nom;
+        this.ingredient=ingredient;
         this.recette = recette;
     }
 
@@ -17,6 +19,14 @@ public class Cocktail {
 
     public void setNom(String nom) {
         this.nom = nom;
+    }
+
+    public String getIngredient() {
+        return ingredient;
+    }
+
+    public void setIngredient(String ingredient) {
+        this.ingredient = ingredient;
     }
 
     public String getRecette() {
@@ -31,6 +41,7 @@ public class Cocktail {
     public String toString() {
         return "Cocktail{" +
                 "nom='" + nom + '\'' +
+                ", ingredient='" + ingredient + '\'' +
                 ", recette='" + recette + '\'' +
                 '}';
     }

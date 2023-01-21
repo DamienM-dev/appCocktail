@@ -2,6 +2,7 @@ package com.example.appcocktail;
 
 import static android.service.controls.ControlsProviderService.TAG;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -10,16 +11,34 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-public class MainActivity<FirebaseAuth> extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        // Check if user is signed in (non-null) and update UI accordingly.
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        if(currentUser != null){
+            currentUser.reload();
+        }
+    }
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,10 +46,15 @@ public class MainActivity<FirebaseAuth> extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
-//Au clique du bouton, je vais sur l'accueil
-        //TODO faire une condition pour connecter grace a l'email et pwd
+//connexion à l'application
+
 
         mAuth = FirebaseAuth.getInstance();
+
+
+
+
+
 
         Button button = findViewById(R.id.buttonConnexion);
         button.setOnClickListener(new View.OnClickListener() {
@@ -38,8 +62,11 @@ public class MainActivity<FirebaseAuth> extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(view.getContext(), HomeActivity.class);
                 startActivity(intent);
+
             }
         });
+
+        //redirige vers le formulaire d'inscription
 
         TextView textView = findViewById(R.id.textInscription);
         textView.setOnClickListener(new View.OnClickListener() {
@@ -50,6 +77,8 @@ public class MainActivity<FirebaseAuth> extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        //Base de donnée Firebase
+
         // Write a message to the database
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference("message");
@@ -74,4 +103,5 @@ public class MainActivity<FirebaseAuth> extends AppCompatActivity {
         });
 
     }
+
 }
