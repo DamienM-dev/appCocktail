@@ -46,7 +46,7 @@ public class HomeActivity extends AppCompatActivity {
         ViewPager2 viewPager2;
         ArrayList<ItemCategory> viewItemCategory;
 
-        viewPager2 = findViewById(R.id.recyclerViewItem);
+        viewPager2 = findViewById(R.id.viewPager);
         int [] images = {R.drawable.gin, R.drawable.rhum, R.drawable.whiskey, R.drawable.vodka};
         String[] titles = {"Gin", "Rhum", "Wiskey", "Vodka"};
 
