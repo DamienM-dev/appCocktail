@@ -6,6 +6,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -27,6 +28,7 @@ import com.google.firebase.database.ValueEventListener;
 public class MainActivity extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
+
 
     @Override
     public void onStart() {
@@ -101,6 +103,9 @@ public class MainActivity extends AppCompatActivity {
                 Log.w(TAG, "Failed to read value.", error.toException());
             }
         });
+
+
+
 
     }
 
