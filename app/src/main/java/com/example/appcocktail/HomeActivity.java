@@ -19,6 +19,10 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
+        /**
+         * Création d'une liste déroulante
+         */
+
         Spinner spinner = findViewById(R.id.spinner);
 
         String[] items = {"Vodka", "Rhum", "Gin"};
@@ -30,40 +34,55 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String selectedItem = parent.getItemAtPosition(position).toString();
-                // faire quelque chose avec l'élément sélectionné
+
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
-                // rien à faire
+
             }
         });
         SearchView searchView = findViewById(R.id.searchView);
         searchView.setClickable(true);
 
-        //partie caroussel
+        /**
+         * Création d'un viewPager (Caroussel d'image)
+         */
 
         ViewPager2 viewPager2;
         ArrayList<ItemCategory> viewItemCategory;
 
+        /**
+         * Tableaux contenant images et titre
+         */
         viewPager2 = findViewById(R.id.viewPager);
-        int [] images = {R.drawable.gin, R.drawable.rhum, R.drawable.whiskey, R.drawable.vodka};
+        int [] images = {R.drawable.gin, R.drawable.rhum, R.drawable.whisky, R.drawable.vodka};
         String[] titles = {"Gin", "Rhum", "Wiskey", "Vodka"};
 
         viewItemCategory = new ArrayList<>();
 
-        for(int i =0; i<images.length; i++) {
+        /**
+         * Boucle pour faire correspondre image + titre
+         */
+
+        for(int i = 0; i < images.length; i++) {
 
             ItemCategory itemCategory = new ItemCategory(images[i], titles[i]);
             viewItemCategory.add(itemCategory);
+
         }
+
+
 
         ItemAdapter itemAdapter = new ItemAdapter(viewItemCategory);
 
+        /**
+         * Permet de lier le modéle et la vue
+         */
         viewPager2.setAdapter(itemAdapter);
-        viewPager2.setClipToPadding(false);
+        
         viewPager2.setClipChildren(false);
-        viewPager2.setOffscreenPageLimit(2);
+        viewPager2.setOffscreenPageLimit(3);
         viewPager2.getChildAt(0).setOverScrollMode(View.OVER_SCROLL_NEVER);
 
 

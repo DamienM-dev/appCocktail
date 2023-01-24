@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,9 +26,12 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.Objects;
+
 public class MainActivity extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
+    String emailValue, pwdValue;
 
 
     @Override
@@ -40,6 +44,12 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Objet de référence à la base de données Firebase
+     */
+
+    DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://cocktailapp-e9109-default-rtdb.europe-west1.firebasedatabase.app/");
+
 
 
     @Override
@@ -47,28 +57,97 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        /**
+         *  base de donée SQLite
+         */
 
-//connexion à l'application
 
+        RecipeCocktailDataBase recipeCocktailDataBase = new RecipeCocktailDataBase(MainActivity.this);
 
         mAuth = FirebaseAuth.getInstance();
 
 
-
-
+        /**
+         * connexion à l'application
+         */
 
 
         Button button = findViewById(R.id.buttonConnexion);
+        EditText email = findViewById(R.id.emailField);
+        EditText pwd = findViewById(R.id.pwdField);
+
+
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(view.getContext(), HomeActivity.class);
-                startActivity(intent);
+
+                /**
+                 * Recuperation des champs de connexion
+                 */
+
+
+               final String emailFormConnexion = email.getText().toString();
+                final String pwdFormConnexion = pwd.getText().toString();
+
+
+
+
+
+// Ajout d'un écouteur pour récupérer les données lorsqu'elles sont modifiées
+
+               String userIdMail = emailFormConnexion.replaceAll("[^a-zA-Z0-9]", "");
+               Log.i(TAG, "mon id est " + userIdMail);
+
+                databaseReference.child("Utilisateur").child(userIdMail).addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                       emailValue = dataSnapshot.child("email").getValue(String.class);
+                        pwdValue = dataSnapshot.child("pwd").getValue(String.class);
+                        Log.i(TAG,"mot de passe bdd est " + pwdValue);
+
+
+                        /**
+                         * Verification des donnees
+                         */
+
+                        if (emailFormConnexion.isEmpty() || pwdFormConnexion.isEmpty()) {
+
+                            // Affiche un message d'erreur
+                            Toast.makeText(MainActivity.this, "Les champs de connexion doivent être remplit", Toast.LENGTH_SHORT).show();
+                        }
+                        /**
+                         * Vérifie que les champs sont identiques
+                         */
+                        else if (!Objects.equals(pwdValue, pwdFormConnexion) || !Objects.equals(emailValue, emailFormConnexion))
+                        {
+
+                            Log.i(TAG,"mot de passe champs form " + pwdFormConnexion);
+
+                            // Affiche un message d'erreur
+                            Toast.makeText(MainActivity.this, "Probléme de connexion", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Intent intent = new Intent(view.getContext(), HomeActivity.class);
+                            startActivity(intent);
+                            // Toast.makeText(MainActivity.this, "Bonne visite !", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+
+                } );
+
+
+
 
             }
         });
 
-        //redirige vers le formulaire d'inscription
+        /**
+         * Gestion du champs d'inscription
+         */
 
         TextView textView = findViewById(R.id.textInscription);
         textView.setOnClickListener(new View.OnClickListener() {
@@ -79,7 +158,9 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        //Base de donnée Firebase
+        /**
+         * Base de donnée Firebase
+         */
 
         // Write a message to the database
         FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -103,10 +184,6 @@ public class MainActivity extends AppCompatActivity {
                 Log.w(TAG, "Failed to read value.", error.toException());
             }
         });
-
-
-
-
     }
 
 }

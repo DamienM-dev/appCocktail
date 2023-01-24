@@ -27,6 +27,10 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder>{
                 .inflate(R.layout.item_category,parent,false);
 
 
+
+
+
+
         return new ViewHolder(view);
     }
 
@@ -42,6 +46,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder>{
 
     @Override
     public int getItemCount() {
+
         return viewPager2ArrayList.size();
     }
 
@@ -52,6 +57,8 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder>{
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
+
+
 
             imageView = itemView.findViewById(R.id.image_item);
             titleView = itemView.findViewById(R.id.title_item);

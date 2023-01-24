@@ -22,16 +22,6 @@ public class RecipeCocktailDataBase extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "cocktails.db";
     private static final int DATABASE_VERSION = 1;
 
-    String createTableSql = "CREATE TABLE " +
-            TABLE_COCKTAIL + " (" +
-            COCKTAIL_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-            COCKTAIL_NAME + " TEXT NOT NULL, " +
-            COCKTAIL_ALCOOL + "TEXT NOT NULL," +
-            COCKTAIL_IMAGE + " BLOB NOT NULL, " +
-            COCKTAIL_INGREDIENT + "TEXT NOT NULL, " +
-            COCKTAIL_RECIPE + " TEXT NOT NULL" +
-            ");";
-
 
 
     public RecipeCocktailDataBase (Context context) {
@@ -42,6 +32,17 @@ public class RecipeCocktailDataBase extends SQLiteOpenHelper {
     }
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
+
+        String createTableSql = "CREATE TABLE " +
+                TABLE_COCKTAIL + " (" +
+                COCKTAIL_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                COCKTAIL_NAME + " TEXT NOT NULL, " +
+                COCKTAIL_ALCOOL + "TEXT NOT NULL," +
+                COCKTAIL_IMAGE + " BLOB NOT NULL, " +
+                COCKTAIL_INGREDIENT + "TEXT NOT NULL, " +
+                COCKTAIL_RECIPE + " TEXT NOT NULL" +
+                ");";
+
 
 
         sqLiteDatabase.execSQL(createTableSql);
@@ -63,19 +64,21 @@ public class RecipeCocktailDataBase extends SQLiteOpenHelper {
 
     public void addRecipe(String name, String alcool, String ingredient, String recette, Bitmap image) {
 
+
+
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
 
         
         values.put(COCKTAIL_ALCOOL, "rhum");
         values.put(COCKTAIL_NAME, "Rum Runner");
-        values.put(COCKTAIL_RECIPE,
+        values.put(COCKTAIL_INGREDIENT,
                         "5 cl rhum ambré jamaicain, " +
                         "11 cl de jus d'ananas, " +
                         "2 cl jus de citron pressé" +
                                 "3 gouttes d'Angousta bitters" +
                                 "5 glaçons");
-        values.put("> recette", "Mettez les glaçons et les ingrédients dans la partie inférieur du shakers" +
+        values.put(COCKTAIL_RECIPE, "> Mettez les glaçons et les ingrédients dans la partie inférieur du shakers" +
                 "> Ajustez la partie supérieur du shaker et secouez vivevement pendant 10 secondes" +
                 "> filtrez au-dessus du verre highball à l'aide d'une passoire à glaçon. Servez aussitôt");
 
@@ -89,4 +92,5 @@ public class RecipeCocktailDataBase extends SQLiteOpenHelper {
 
 
     }
+
 }

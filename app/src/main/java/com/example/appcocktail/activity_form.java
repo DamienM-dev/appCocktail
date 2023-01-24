@@ -28,8 +28,13 @@ public class activity_form extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_form);
+
         // Affichage de l'icone dans la toolbar
         getSupportActionBar().setDisplayShowHomeEnabled(true);
+
+        /**
+         * Récupération des id
+         */
         getSupportActionBar().setIcon(R.mipmap.ic_launcher);
         inputNom = (EditText) findViewById(R.id.et_name);
         inputPrenom = (EditText) findViewById(R.id.et_surname);
@@ -44,6 +49,13 @@ public class activity_form extends AppCompatActivity {
         mFirebaseInstance.getReference("titre").setValue("Liste des personnes Database Firebase");
         // listener sur le titre
         mFirebaseInstance.getReference("titre").addValueEventListener(new ValueEventListener() {
+
+            /**
+             * MaJ de la bdd
+             * @param dataSnapshot
+             */
+
+
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 Log.e(TAG, "titre mis a jour");
@@ -59,7 +71,9 @@ public class activity_form extends AppCompatActivity {
                 Log.e(TAG, "Impossible de lire le noeud titre dans la database", error.toException());
             }
         });
-        // Sauvegarde de la personne saisie dans le formulaire
+        /**
+         * Création de l'utilisateur
+         */
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -81,7 +95,10 @@ public class activity_form extends AppCompatActivity {
             adresse, String tel) {
         //possibilité de définir un identifiant unique en
         // appellant la méthode ! mFirebaseDatabase.push().getKey();
-        userId = nom + "_" + prenom;
+
+        //J'utilise une regex car il est impossible de mettre des caractéres spéciaux dans une userId Firebase
+        userId = email.replaceAll("[^a-zA-Z0-9]", "");
+
         Utilisateur pers = new Utilisateur(nom, prenom, email, adresse, tel);
         //creation de la node nom_prenom et insertion des valeurs
         mFirebaseDatabase.child(userId).setValue(pers);
