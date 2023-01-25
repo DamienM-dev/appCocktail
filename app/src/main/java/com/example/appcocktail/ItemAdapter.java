@@ -1,5 +1,7 @@
 package com.example.appcocktail;
 
+import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,8 +16,13 @@ import java.util.ArrayList;
 
 public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder>{
 
+    private Context context;
+    private Intent[] intents;
+
     public ItemAdapter(ArrayList<ItemCategory> viewPager2ArrayList) {
         this.viewPager2ArrayList = viewPager2ArrayList;
+        this.context = context;
+        this.intents = intents;
     }
 
     ArrayList<ItemCategory> viewPager2ArrayList;
@@ -28,9 +35,6 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder>{
 
 
 
-
-
-
         return new ViewHolder(view);
     }
 
@@ -39,8 +43,10 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder>{
 
         ItemCategory itemCategory = viewPager2ArrayList.get(position);
 
+        //Le holder stock les éléments afin d'éviter de devoir les recréer à chaque fois
         holder.imageView.setImageResource(itemCategory.imageID);
         holder.titleView.setText(itemCategory.title);
+
 
     }
 

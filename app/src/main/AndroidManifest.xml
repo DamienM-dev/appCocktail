@@ -15,6 +15,41 @@
         android:theme="@style/Theme.AppCocktail"
         tools:targetApi="31">
         <activity
+            android:name=".addRecipe"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".VodkaPageActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".WhiskyPageActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".RhumPageActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".GinPageActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".activity_form"
             android:exported="false">
             <meta-data
@@ -41,9 +76,6 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-
     </application>
-
-
 
 </manifest>

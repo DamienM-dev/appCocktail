@@ -19,7 +19,7 @@ public class RecipeCocktailDataBase extends SQLiteOpenHelper {
     public static final String COCKTAIL_INGREDIENT = "ingredient";
     public static final String COCKTAIL_RECIPE = "recette";
 
-    private static final String DATABASE_NAME = "cocktails.db";
+    private static final String DATABASE_NAME = "cocktail.db";
     private static final int DATABASE_VERSION = 1;
 
 
@@ -62,35 +62,5 @@ public class RecipeCocktailDataBase extends SQLiteOpenHelper {
 
     }
 
-    public void addRecipe(String name, String alcool, String ingredient, String recette, Bitmap image) {
-
-
-
-        SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues values = new ContentValues();
-
-        
-        values.put(COCKTAIL_ALCOOL, "rhum");
-        values.put(COCKTAIL_NAME, "Rum Runner");
-        values.put(COCKTAIL_INGREDIENT,
-                        "5 cl rhum ambré jamaicain, " +
-                        "11 cl de jus d'ananas, " +
-                        "2 cl jus de citron pressé" +
-                                "3 gouttes d'Angousta bitters" +
-                                "5 glaçons");
-        values.put(COCKTAIL_RECIPE, "> Mettez les glaçons et les ingrédients dans la partie inférieur du shakers" +
-                "> Ajustez la partie supérieur du shaker et secouez vivevement pendant 10 secondes" +
-                "> filtrez au-dessus du verre highball à l'aide d'une passoire à glaçon. Servez aussitôt");
-
-        ByteArrayOutputStream stream = new ByteArrayOutputStream();
-        image.compress(Bitmap.CompressFormat.PNG, 0, stream);
-        byte[] imageData = stream.toByteArray();
-        values.put(COCKTAIL_IMAGE, "https://zupimages.net/up/23/03/l01s.jpg");
-
-        db.insert(TABLE_COCKTAIL, null, values);
-        db.close();
-
-
-    }
 
 }

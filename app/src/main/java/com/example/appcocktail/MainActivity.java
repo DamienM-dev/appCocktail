@@ -5,6 +5,7 @@ import static android.service.controls.ControlsProviderService.TAG;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
@@ -72,14 +73,28 @@ public class MainActivity extends AppCompatActivity {
          */
 
 
+        Button button1 = findViewById(R.id.buttonAjoutBdd);
         Button button = findViewById(R.id.buttonConnexion);
         EditText email = findViewById(R.id.emailField);
         EditText pwd = findViewById(R.id.pwdField);
+
+        button1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, addRecipe.class);
+                startActivity(intent);
+            }
+        });
 
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+
+
+
+
 
                 /**
                  * Recuperation des champs de connexion
