@@ -90,17 +90,19 @@ public class Persistance {
     }
 
     // requete de selection
+
     public Cursor select() {
         String selectQuery = "SELECT  * FROM " + RecipeCocktailDataBase.TABLE_COCKTAIL ;
-        Cursor c = database.rawQuery(selectQuery, null);
+        String query = "SELECT * FROM cocktail WHERE alcool = 'vodka'";
+        Cursor c = database.rawQuery(query, null);
 
 
         if (c != null) {
             c.moveToFirst();
         }
         //c.close();
-        return c;
-
+        assert c != null;
+       return c;
     }
 
 }

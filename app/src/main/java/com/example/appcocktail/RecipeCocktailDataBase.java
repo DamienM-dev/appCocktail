@@ -43,9 +43,6 @@ public class RecipeCocktailDataBase extends SQLiteOpenHelper {
                 COCKTAIL_RECIPE + " TEXT NOT NULL" +
                 ");";
 
-
-
-        sqLiteDatabase.execSQL(createTableSql);
         Log.i("DATABASE", "ma bdd a été crée !");
 
 

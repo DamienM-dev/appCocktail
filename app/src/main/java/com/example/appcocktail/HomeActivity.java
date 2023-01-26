@@ -4,7 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager2.widget.ViewPager2;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -23,7 +25,7 @@ public class HomeActivity extends AppCompatActivity {
         /**
          * Création d'une liste déroulante
          */
-
+/*
         Spinner spinner = findViewById(R.id.spinner);
 
         String[] items = {"Vodka", "Rhum", "Gin"};
@@ -38,11 +40,15 @@ public class HomeActivity extends AppCompatActivity {
 
             }
 
+
+
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
 
             }
         });
+
+*/
         SearchView searchView = findViewById(R.id.searchView);
         searchView.setClickable(true);
 
@@ -51,12 +57,8 @@ public class HomeActivity extends AppCompatActivity {
          */
 
 
-
-
         ViewPager2 viewPager2;
         ArrayList<ItemCategory> viewItemCategory;
-
-
 
 
         Intent[] intents;
@@ -93,13 +95,20 @@ public class HomeActivity extends AppCompatActivity {
          * Permet de lier le modéle et la vue
          */
         viewPager2.setAdapter(itemAdapter);
-
+        // A false définit que les enfants peuvent déborder
         viewPager2.setClipChildren(false);
+        // Définit le nombre de page a conserver en mémoire
         viewPager2.setOffscreenPageLimit(3);
+        // Aucun effet si utilisateur effectue un défillement hors des limites de la vue;
         viewPager2.getChildAt(0).setOverScrollMode(View.OVER_SCROLL_NEVER);
 
+        Persistance persistance =new Persistance(this);
+        persistance.open();
+        Cursor c= persistance.select();
 
+        Cocktail cocktailVar = new Cocktail(c.getString(2), c.getString(1),c.getString(5),c.getString(3),c.getString(4));
 
+        Log.i("LOG", "valeur :" + cocktailVar);
 
     }
 }

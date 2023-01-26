@@ -73,27 +73,14 @@ public class MainActivity extends AppCompatActivity {
          */
 
 
-        Button button1 = findViewById(R.id.buttonAjoutBdd);
+
         Button button = findViewById(R.id.buttonConnexion);
         EditText email = findViewById(R.id.emailField);
         EditText pwd = findViewById(R.id.pwdField);
 
-        button1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, addRecipe.class);
-                startActivity(intent);
-            }
-        });
-
-
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-
-
-
 
 
                 /**
@@ -103,8 +90,6 @@ public class MainActivity extends AppCompatActivity {
 
                final String emailFormConnexion = email.getText().toString();
                 final String pwdFormConnexion = pwd.getText().toString();
-
-
 
 
 
@@ -153,10 +138,6 @@ public class MainActivity extends AppCompatActivity {
                     }
 
                 } );
-
-
-
-
             }
         });
 
