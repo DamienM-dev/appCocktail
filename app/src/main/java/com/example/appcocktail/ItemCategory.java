@@ -6,12 +6,12 @@ public class ItemCategory {
 
     int imageID;
     String title;
-    Intent intent;
 
-    public ItemCategory(int imageID, String title, Intent intent) {
+
+    public ItemCategory(int imageID, String title) {
         this.imageID = imageID;
         this.title = title;
-        this.intent = intent;
+
     }
 
     public int getImageID() {
@@ -30,11 +30,4 @@ public class ItemCategory {
         this.title = title;
     }
 
-    public Intent getIntent() {
-        return intent;
-    }
-
-    public void setIntent(Intent intent) {
-        this.intent = intent;
-    }
 }

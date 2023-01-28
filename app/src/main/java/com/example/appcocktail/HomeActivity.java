@@ -22,33 +22,7 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        /**
-         * Création d'une liste déroulante
-         */
-/*
-        Spinner spinner = findViewById(R.id.spinner);
 
-        String[] items = {"Vodka", "Rhum", "Gin"};
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, items);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner.setAdapter(adapter);
-
-        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                String selectedItem = parent.getItemAtPosition(position).toString();
-
-            }
-
-
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
-
-*/
         SearchView searchView = findViewById(R.id.searchView);
         searchView.setClickable(true);
 
@@ -60,19 +34,16 @@ public class HomeActivity extends AppCompatActivity {
         ViewPager2 viewPager2;
         ArrayList<ItemCategory> viewItemCategory;
 
-
-        Intent[] intents;
-        Intent intents1 = new Intent(this, GinPageActivity.class);
-        Intent intents2 = new Intent(this, RhumPageActivity.class);
-        Intent intents3 = new Intent(this, WhiskyPageActivity.class);
-        Intent intents4 = new Intent(this, VodkaPageActivity.class);
+;
         /**
          * Tableaux contenant images et titre
          */
+
         viewPager2 = findViewById(R.id.viewPager);
         int [] images = {R.drawable.gin, R.drawable.rhum, R.drawable.whisky, R.drawable.vodka};
         String[] titles = {"Gin", "Rhum", "Wiskey", "Vodka"};
-        intents = new Intent[]{intents1, intents2, intents3, intents4};
+
+
 
 
         viewItemCategory = new ArrayList<>();
@@ -81,13 +52,15 @@ public class HomeActivity extends AppCompatActivity {
          * Boucle pour faire correspondre image + titre
          */
 
-        for(int i = 0; i < images.length; i++) {
+        for(int i = 0; i < titles.length; i++) {
 
-            ItemCategory itemCategory = new ItemCategory(images[i], titles[i], intents[i]);
+
+            ItemCategory itemCategory = new ItemCategory(images[i], titles[i]);
             viewItemCategory.add(itemCategory);
+
         }
 
-        ItemAdapter itemAdapter = new ItemAdapter(viewItemCategory);
+        ItemAdapter itemAdapter = new ItemAdapter(viewItemCategory,this);
 
 
 
