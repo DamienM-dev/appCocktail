@@ -1,8 +1,11 @@
 package com.example.appcocktail;
 
+import android.view.View;
+
 public class Cocktail {
 
-    String alcool, nom, image, ingredient, recipe;
+    String alcool, nom,  ingredient, recipe, image;
+
 
     public Cocktail(String alcool, String nom, String image, String ingredient, String recipe) {
 
@@ -12,8 +15,6 @@ public class Cocktail {
         this.ingredient = ingredient;
         this.recipe = recipe;
     }
-
-
 
     public String getAlcool() {
         return alcool;
@@ -31,14 +32,6 @@ public class Cocktail {
         this.nom = nom;
     }
 
-    public String getImage() {
-        return image;
-    }
-
-    public void setImage(String image) {
-        this.image = image;
-    }
-
     public String getIngredient() {
         return ingredient;
     }
@@ -53,6 +46,14 @@ public class Cocktail {
 
     public void setRecipe(String recipe) {
         this.recipe = recipe;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 
     @Override

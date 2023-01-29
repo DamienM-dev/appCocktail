@@ -1,5 +1,6 @@
 package com.example.appcocktail;
 
+import android.content.ClipData;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -13,68 +14,36 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.ViewPager2;
 
 import java.util.ArrayList;
+import java.util.List;
 
-public class CocktailAdapter extends RecyclerView.Adapter<CocktailAdapter.ViewHolder>{
+public class CocktailAdapter extends RecyclerView.Adapter<VodkaHolder>{
 
-    private Context context;
-    private Intent[] intents;
+    Context context;
+    List<Cocktail> ct;
 
-    public CocktailAdapter(ArrayList<Cocktail> viewPager2ArrayList) {
-
-        this.viewPager2ArrayList = viewPager2ArrayList;
+    public CocktailAdapter(Context context, List<Cocktail> ct) {
         this.context = context;
-        this.intents = intents;
+        this.ct = ct;
     }
-
-    ArrayList<Cocktail> viewPager2ArrayList;
 
     @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.activity_vodka_page,parent,false);
-
-
-
-        return new ViewHolder(view);
+    public VodkaHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        return new VodkaHolder(LayoutInflater.from(context).inflate(R.layout.item_vodka,parent,false));
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull VodkaHolder holder, int position) {
 
-        Cocktail cocktail = viewPager2ArrayList.get(position);
+        holder.ingredient_recipe.setText(ct.get(position).getIngredient());
+        holder.name_recipe.setText(ct.get(position).getNom());
+        holder.alcool_recipe.setText(ct.get(position).getAlcool());
 
-        //Le holder stock les éléments afin d'éviter de devoir les recréer à chaque fois
-        holder.titleView.setText(cocktail.nom);
-        holder.titleView.setText(cocktail.alcool);
-        holder.titleView.setText(cocktail.ingredient);
-        holder.titleView.setText(cocktail.recipe);
-        holder.titleView.setText(cocktail.image);
-
-
+        holder.recipe.setText(ct.get(position).getRecipe());
     }
 
     @Override
     public int getItemCount() {
-
-        return viewPager2ArrayList.size();
-    }
-
-    public class ViewHolder extends RecyclerView.ViewHolder {
-
-        TextView titleView;
-
-        public ViewHolder(@NonNull View itemView) {
-            super(itemView);
-
-
-            titleView = itemView.findViewById(R.id.name_recipe);
-            titleView = itemView.findViewById(R.id.alcool_recipe);
-            titleView = itemView.findViewById(R.id.ingredient_recipe);
-            titleView = itemView.findViewById(R.id.img_recipe);
-            titleView = itemView.findViewById(R.id.recipe);
-        }
+        return ct.size();
     }
 }
-
-

@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
+import android.util.Log;
 
 import java.io.ByteArrayOutputStream;
 
@@ -39,33 +40,6 @@ public class Persistance {
     // requete insertion
     public void insertData(Cocktail ct) {
 
-
-      String nom =ct.getNom();
-      String alcool = ct.getAlcool();
-      String image = ct.getImage();
-      String ingredient = ct.getIngredient();
-      String recipe = ct.getRecipe();
-
-
-        ContentValues values = new ContentValues();
-
-
-        values.put(RecipeCocktailDataBase.COCKTAIL_ALCOOL, "rhum");
-        values.put(RecipeCocktailDataBase.COCKTAIL_ALCOOL, "Rum Runner");
-        values.put(RecipeCocktailDataBase.COCKTAIL_ALCOOL,
-                "5 cl rhum ambré jamaicain, " +
-                        "11 cl de jus d'ananas, " +
-                        "2 cl jus de citron pressé" +
-                        "3 gouttes d'Angousta bitters" +
-                        "5 glaçons");
-        values.put(RecipeCocktailDataBase.COCKTAIL_ALCOOL, "> Mettez les glaçons et les ingrédients dans la partie inférieur du shakers" +
-                "> Ajustez la partie supérieur du shaker et secouez vivevement pendant 10 secondes" +
-                "> filtrez au-dessus du verre highball à l'aide d'une passoire à glaçon. Servez aussitôt");
-
-
-        values.put(RecipeCocktailDataBase.COCKTAIL_IMAGE, "https://zupimages.net/up/23/03/l01s.jpg");
-        database.insert(RecipeCocktailDataBase.TABLE_COCKTAIL, null, values);
-
     }
 
     // requete de suppression
@@ -92,10 +66,9 @@ public class Persistance {
     // requete de selection
 
     public Cursor select() {
-        String selectQuery = "SELECT  * FROM " + RecipeCocktailDataBase.TABLE_COCKTAIL ;
+
         String query = "SELECT * FROM cocktail WHERE alcool = 'vodka'";
         Cursor c = database.rawQuery(query, null);
-
 
         if (c != null) {
             c.moveToFirst();
@@ -104,5 +77,7 @@ public class Persistance {
         assert c != null;
        return c;
     }
+
+
 
 }

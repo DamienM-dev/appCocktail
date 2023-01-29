@@ -75,13 +75,6 @@ public class HomeActivity extends AppCompatActivity {
         // Aucun effet si utilisateur effectue un défillement hors des limites de la vue;
         viewPager2.getChildAt(0).setOverScrollMode(View.OVER_SCROLL_NEVER);
 
-        Persistance persistance =new Persistance(this);
-        persistance.open();
-        Cursor c= persistance.select();
-
-        Cocktail cocktailVar = new Cocktail(c.getString(2), c.getString(1),c.getString(5),c.getString(3),c.getString(4));
-
-        Log.i("LOG", "valeur :" + cocktailVar);
 
     }
 }
