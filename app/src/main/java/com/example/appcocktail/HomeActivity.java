@@ -43,9 +43,6 @@ public class HomeActivity extends AppCompatActivity {
         int [] images = {R.drawable.gin, R.drawable.rhum, R.drawable.whisky, R.drawable.vodka};
         String[] titles = {"Gin", "Rhum", "Wiskey", "Vodka"};
 
-
-
-
         viewItemCategory = new ArrayList<>();
 
         /**
@@ -61,8 +58,6 @@ public class HomeActivity extends AppCompatActivity {
         }
 
         ItemAdapter itemAdapter = new ItemAdapter(viewItemCategory,this);
-
-
 
         /**
          * Permet de lier le modéle et la vue

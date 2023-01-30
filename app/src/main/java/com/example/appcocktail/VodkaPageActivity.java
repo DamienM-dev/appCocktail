@@ -19,11 +19,19 @@ public class VodkaPageActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_vodka_page);
 
+
+
         RecyclerView recyclerView = findViewById(R.id.vodka_recycler_view);
         List<Cocktail> ct = new ArrayList<Cocktail>();
         Persistance persistance =new Persistance(this);
         persistance.open();
-        Cursor c= persistance.select();
+
+
+
+
+        Cursor c= persistance.selectVodka();
+
+
 
             Cocktail cocktailVar = new Cocktail(c.getString(2), c.getString(1),c.getString(5),c.getString(3),c.getString(4));
             ct.add(cocktailVar);

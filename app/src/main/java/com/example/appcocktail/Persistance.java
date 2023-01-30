@@ -65,9 +65,36 @@ public class Persistance {
 
     // requete de selection
 
-    public Cursor select() {
+    public Cursor selectVodka() {
 
-        String query = "SELECT * FROM cocktail WHERE alcool = 'vodka'";
+        String query = " SELECT * FROM cocktail WHERE alcool = 'vodka'";
+
+        Cursor c = database.rawQuery(query, null);
+
+        if (c != null) {
+            c.moveToFirst();
+        }
+
+        assert c != null;
+       return c;
+    }
+
+    public Cursor selectGin() {
+        String query = " SELECT * FROM cocktail WHERE alcool = 'gin' ";
+
+        Cursor c = database.rawQuery(query, null);
+
+        if (c != null) {
+            c.moveToFirst();
+        }
+
+        assert c != null;
+        return c;
+    }
+
+    public Cursor selectWhisky() {
+        String query = " SELECT * FROM cocktail WHERE alcool = 'whisky' ";
+
         Cursor c = database.rawQuery(query, null);
 
         if (c != null) {
@@ -75,9 +102,19 @@ public class Persistance {
         }
         //c.close();
         assert c != null;
-       return c;
+        return c;
     }
 
+    public Cursor selectRhum() {
+        String query = " SELECT * FROM cocktail WHERE alcool = 'rhum' ";
 
+        Cursor c = database.rawQuery(query, null);
 
+        if (c != null) {
+            c.moveToFirst();
+        }
+        //c.close();
+        assert c != null;
+        return c;
+    }
 }

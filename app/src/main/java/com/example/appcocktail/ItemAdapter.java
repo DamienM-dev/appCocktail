@@ -56,7 +56,8 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder>{
             titleView = itemView.findViewById(R.id.title_item);
             itemView.setOnClickListener(view -> {
                 Intent intent;
-                switch (getAdapterPosition()) {
+
+                switch (getBindingAdapterPosition()) {
                     case 0:
                         intent = new Intent(view.getContext(), GinPageActivity.class);
                         break;
